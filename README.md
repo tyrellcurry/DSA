@@ -1,9 +1,10 @@
 # DSA in Java 👾
-This repo is a place to store all my studies of DSA. I have decided to write it in Java due to it's strictly typed nature, OOP design, and just generally wanting to gain more comfortability with writing Java.
+This repo is a place to store all my studies of DSA. I have decided to write it in Java due to its strictly typed nature, OOP design, and just generally wanting to become more comfortable with writing Java.
 
 ## Tracker:
 
 ### Data Structures:
+- [ ] Array
 - [x] Linked Lists
 - [ ] Doubly Linked Lists
 - [ ] Stacks & Queues
@@ -11,15 +12,16 @@ This repo is a place to store all my studies of DSA. I have decided to write it 
 - [ ] Hash Tables
 - [ ] Graphs
 - [ ] Heaps
-- [ ] Array
 
 ## Programming Concepts:
 - [ ] Recursion
-- [ ] Recursive Binary Search Trees
+- [ ] Binary Search Tree (BST) Implementation with Recursion
 - [ ] Tree Traversal
 - [ ] Dynamic Programming
+- [ ] Iterative vs Recursive Solutions
 
 ## Algorithms:
-- [ ] Basic Sorts
-- [ ] Merge Sorts
+- [ ] Binary Search
+- [ ] Basic Sorts (Bubble, Insertion, Selection)
+- [ ] Merge Sort
 - [ ] Quick Sort
