@@ -1,4 +1,4 @@
-package LinkedList;
+package LinkedList.src;
 
 /* Linked Lists:
 * Linked Lists (LL) are commonly compared to array lists, because they are both dynamic in length as opposed to arrays which are fixed in length.
@@ -51,9 +51,9 @@ public class LinkedList {
     private int length;
 
     // A Node class is created to be reused because many methods, including the constructor, of LL will need to create new Nodes.
-    class Node {
-        int value;
-        Node next;
+    public class Node {
+        public int value;
+        public Node next;
         public Node(int value){
             this.value = value;
         }
@@ -64,6 +64,27 @@ public class LinkedList {
         head = newNode;
         tail = newNode;
         length = 1;
+    }
+
+    public Node getHead() {
+        return head;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
+    public void printList() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.println(temp.value);
+            temp = temp.next;
+        }
+    }
+
+    public int getMiddleNodeValue() {
+        Node middleNode = findMiddleNode();
+        return middleNode.value;
     }
 
     public void append(int value) {
@@ -191,6 +212,87 @@ public class LinkedList {
             // Set temp to be the next node in the linked list
             temp = after;
         }
+  }
+
+  //LeetCode methods:
+
+    // Find middle of node:
+  public Node findMiddleNode() {
+        // create slow node (1 step at a time)
+      Node slow = head;
+      // create fast node (2 steps at a time)
+      Node fast = head;
+
+      // iterate while the fast node is not null and the next node after fast is also not null
+      while (fast != null && fast.next != null) {
+          // move slow 1 step forward
+          slow = slow.next;
+          // move fast 2 steps forward
+          fast = fast.next.next;
+      }
+      // once the loop has ended, the slow node will be in the middle of the list
+      return slow;
+  }
+
+  // checking if list has a loop
+  public boolean hasLoop() {
+      Node slow = head;
+      Node fast = head;
+
+      while (fast != null && fast.next != null) {
+          slow = slow.next;
+          fast = fast.next.next;
+          // checking if slow and fast are the same node
+          if(slow == fast) {
+              // if they are, it is a loop because they have met
+              return true;
+          }
+      }
+      // if not, we can return false
+          return false;
+  }
+
+  // Find the k-th node from the end of the linked list
+  public Node findKthFromEnd(int k) {
+        // initialized slow and fast pointers to point to head
+      Node slow = head;
+      Node fast = head;
+      // move the fast pointer ahead k amount of times
+      for(int i = 0; i < k; i++) {
+          if(fast == null) return null;
+          fast = fast.next;
+      }
+      // now that there is a gap of k between the slow and fast pointers, we can now move them together 1 by 1 until we reach the end of the list
+      while(fast != null) {
+          slow = slow.next;
+          fast = fast.next;
+      }
+      // once fast reaches null, we are at the end of the list, so we return the slow pointer which will be k away from the list end
+      return slow;
+  }
+
+  public void partitionList(int x) {
+        if(head == null) return;
+
+        Node dummy1 = new Node(0);
+        Node dummy2 = new Node(0);
+        Node prev1 = dummy1;
+        Node prev2 = dummy2;
+        Node current = head;
+
+        while(current != null) {
+            if(current.value < x) {
+                prev1.next = current;
+                prev1 = current;
+            } else {
+                prev2.next = current;
+                prev2 = current;
+            }
+            current = current.next;
+        }
+      prev2.next = null;
+      prev1.next = dummy2.next;
+      head = dummy1.next;
   }
 
 }

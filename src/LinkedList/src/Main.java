@@ -1,4 +1,4 @@
-package LinkedList;
+package LinkedList.src;
 
 public class Main {
 
